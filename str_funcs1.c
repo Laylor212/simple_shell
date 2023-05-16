@@ -2,7 +2,7 @@
  * File: str_function1.c
  * Auth: Anela Made & Mark Oladeinde
  */
-
+#include <stddef.h>
 #include "main.h"
 
 int_strlen(const char *s);

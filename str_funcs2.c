@@ -3,6 +3,7 @@
  * Auth: Anela Made & Mark Oladeinde
  */
 
+#include <stddef.h>
 #include "main.h"
 
 char *_strchr(char *s, char c);
@@ -43,9 +44,9 @@ int _strspn(char *s, char *accept)
 
 	while (*s)
 	{
-		for (ndex = 0; accept[index]; index++)
+		for (index = 0; accept[index]; index++)
 		{
-			is (*s == accept[index])
+			if (*s == accept[index])
 			{
 				bytes++;
 				break;
@@ -72,7 +73,7 @@ int _strcmp(char *s1, char *s2)
 		s2++;
 	}
 	if (*s1 != *s2)
-		rerurn (*s1 - *s2);
+		return (*s1 - *s2);
 	return (0);
 }
 
@@ -92,10 +93,11 @@ int _strncmp(const char *s1, const char *s2, size_t n)
 	for (i = 0; s1[i] && s2[i] && i < n; i++)
 	{
 		if (s1[i] > s2[i])
-			return (s1[i] - s2[i];
+			return (s1[i] - s2[i]);
 					else if (s1[i] < s2[i])
+
 					return (s1[i] - s2[i]);
-					}
+	}
 					if (i == n)
 					return (0);
 						else

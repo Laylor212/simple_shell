@@ -1,8 +1,8 @@
-#indef _SHELL_H_
-#define _SHELL_H
+#ifdef <main.h>
+#define "main.h"
 
 /**
- * File: shell.h
+ * File: main.h
  * Auth: Anela Made & Mark Oladeinde
  **/
 
