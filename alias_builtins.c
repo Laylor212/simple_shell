@@ -13,7 +13,7 @@ void print_alias(alias_t *alias);
  */
 int shellby_alias(char **args, char __attribute__((__unused__)) **front)
 {
-	alias_t *temp == aliases;
+	alias_t *temp = aliases;
 	int i, ret = 0;
 	char *value;
 

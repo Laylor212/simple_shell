@@ -22,7 +22,7 @@ void free_args(char **args, char **front)
 	for (i = 0; args[i] || args[i + 1]; i++)
 		free(args[i]);
 
-	fre(front);
+	free(front);
 }
 
 /**
@@ -39,11 +39,11 @@ char *get_pid(void)
 	char *buffer;
 	ssize_t file;
 
-	file = open("/proc/self/stat", 0_RDONLY);
+	file = open("/proc/self/stat", O_RDONLY);
 	if (file == -1)
 	{
 		perror("Cant read file");
-		return (NELL);
+		return (NULL);
 	}
 	buffer = malloc(120);
 	if (!buffer)
@@ -70,7 +70,7 @@ char *get_pid(void)
  */
 char *get_env_value(char *beginning, int len)
 {
-	char **env_addr;
+	char **var_addr;
 	char *replacement = NULL, *temp, *var;
 
 	var = malloc(len + 1);
@@ -83,7 +83,7 @@ char *get_env_value(char *beginning, int len)
 	free(var);
 	if (var_addr)
 	{
-		temp = 'var_addr;
+		temp = *var_addr;
 		while (*temp != '=')
 			temp++;
 		temp++;
@@ -115,7 +115,8 @@ void variable_replacement(char **line, int *exe_ret)
 				old_line[j +1] != ' ')
 		{
 			if (old_line[j + 1] == '$')
-			{replacement = _itoa(*exe_ret);
+			{
+				replacement = get_pid;
 				k = j + 2;
 			}
 			else if (old_line[j + 1] == '?')
@@ -128,12 +129,14 @@ void variable_replacement(char **line, int *exe_ret)
 				/* extract the variable name tonsearch for */
 				for (k = j + 1; old_line[k] &&
 						old_line[k] != '$' &&
-						old_line[k] != ' '; k++);
+						old_line[k] != ' '; k++)
+					;
 				len = k -(j + i);
-				replacement = get_env_value(&ild_line[j + 1], len);
+				replacement = get_env_value(&old_line[j + 1], len);
 			}
-			new_line = malloc(j + _strlen(replacement) + _strlen(&old_line[k]) + 1);
-			if (!lne)
+			new_line = malloc(j + _strlen(replacement)
+					+ _strlen(&old_line[k]) + 1);
+			if (!line)
 				return;
 			new_line[0] = '\0';
 			_strncat(new_line, old_line, j);

@@ -27,7 +27,7 @@ void handle_line(char **line, ssize_t read)
 	new_len = get_new_len(*line);
 	if (new_len == read - 1)
 		return;
-	new_line = malloc(new_ten + 1);
+	new_line = malloc(new_len + 1);
 	if (!new_line)
 		return;
 	j = 0;
@@ -53,7 +53,7 @@ void handle_line(char **line, ssize_t read)
 					new_line[j++] = ' ';
 					continue;
 				}
-				if (previous !s ' ')
+				if (previous != ' ')
 					new_line[j++] = ' ';
 				new_line[j++] = ';';
 				if (next != ' ')
@@ -71,11 +71,11 @@ void handle_line(char **line, ssize_t read)
 					continue;
 				}
 			}
-			else of (current == '|')
+			else if (current == '|')
 			{
 				if (next == '|' && previous != ' ')
 					new_line[j++] = ' ';
-				else if (previous == '\' && next != ' ')
+				else if (previous == '|' && next != ' ')
 				{
 					new_line[j++] = '|';
 					new_line[j++] = ' ';
@@ -88,7 +88,7 @@ void handle_line(char **line, ssize_t read)
 			if (i != 0 && old_line[i - 1] != ' ')
 				new_line[j++] = ' ';
 			new_line[j++] = ';';
-			if (next 1= ' ' && next != ';')
+			if (next != ' ' && next != ';')
 				new_line[j++] = ' ';
 			continue;
 		}
@@ -101,7 +101,8 @@ void handle_line(char **line, ssize_t read)
 }
 
 /*
- * get_new_len - gets the new length of a line partitioned by ";", "||", "&&&", or "#".
+ * get_new_len - gets the new length of a line partitioned by ";", "||", "&&&",
+ *	or "#".
  * @line: The line to check.
  *
  * Return: The new length of the line.
@@ -119,12 +120,12 @@ ssize_t get_new_len(char *line)
 	{
 		current = line[i];
 		next = line[i + 1];
-		if (current ++ '#')
+		if (current == '#')
 		{
 			if (i == 0 || line[i - 1] == ' ')
 			{
-				lin[i] = '\0';
-			break;
+				line[i] = '\0';
+				break;
 			}
 		}
 		else if (i != 0)
@@ -142,19 +143,14 @@ ssize_t get_new_len(char *line)
 					continue;
 				}
 				if (line[i - 1] != ' ')
-				{
-					new_len += 2;
-				continue;
-				}
-				if (line[i - 1] != ' ')
-					new_len++
-						if (next != ' ')
-							new_len++;
+					new_len ++;
+				if (next != ' ')
+					new_len++;
 			}
 			else
 				logical_ops(&line[i], &new_len);
 		}
-		else id (current == ';')
+		else if (current == ';')
 		{
 			if (i != 0 && line[i - 1] != ' ')
 				new_len++;
@@ -189,7 +185,7 @@ void logical_ops(char *line, ssize_t *new_len)
 	{
 		if (next == '|' && previous != ' ')
 			(*new_len)++;
-		else if (previus == '|' && next != ' ')
+		else if (previous == '|' && next != ' ')
 			(*new_len)++;
 	}
 }

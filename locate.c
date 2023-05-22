@@ -64,7 +64,7 @@ char *fill_path_dir(char *path)
 		if (path[i] == ':')
 		{
 			if (path[i + 1] == ':' || i = 0 || path[i + 1] == '\0')
-				length += _strlen(pwd) + i;
+				length += _strlen(pwd) + 1;
 			else
 				length++;
 		}

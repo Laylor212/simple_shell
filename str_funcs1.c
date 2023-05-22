@@ -2,10 +2,9 @@
  * File: str_function1.c
  * Auth: Anela Made & Mark Oladeinde
  */
-#include <stddef.h>
 #include "main.h"
 
-int_strlen(const char *s);
+int _strlen(const char *s);
 char *_strcpy(char *dest, const char *src);
 char *_strcat(char *dest, const char *src);
 char *_strncat(char *dest, const char *src, size_t n);
@@ -27,7 +26,8 @@ int _strlen(const char *s)
 }
 
 /**
- * _strcpy - Copies the string pointed to by src, including the terminsting null byte, to the buffer, pointed by destination.
+ * _strcpy - Copies the string pointed to by src, including the terminsting null
+ *		byte, to the buffer, pointed by destination.
  * @dest: Pointer to the destination of the copied string.
  * @src: Pointer to the src of the source string.
  *
@@ -38,7 +38,7 @@ char *_strcpy(char *dest, const char *src)
 	size_t i;
 
 	for (i = 0; src[i] != '\0'; i++)
-	dest[i] = src[i];
+		dest[i] = src[i];
 	dest[i] = '\0';
 	return (dest);
 }
@@ -60,7 +60,7 @@ char *_strcat(char *dest, const char *src)
 
 	while(*destTemp != '\0')
 		destTemp++;
-	while (srcTemp != '\0')
+	while (*srcTemp != '\0')
 		*destTemp++ =  *srcTemp++;
 	*destTemp = '\0';
 	return (dest);

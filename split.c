@@ -55,7 +55,7 @@ int count_tokens(char *str, char *delim)
  * @delim: The delimiter character to tokenize the string by
  * Return: A pointer to an array containing the tokenized words
  */
-char **_strtok(chat *line, char *delim)
+char **_strtok(char *line, char *delim)
 {
 	char **ptr;
 	int index = 0, tokens, t, letters, l;
@@ -86,7 +86,7 @@ char **_strtok(chat *line, char *delim)
 
 		for (l = 0; l < letters; l++)
 		{
-			ptr[t][i] = line[index];
+			ptr[t][l] = line[index];
 			index++;
 		}
 

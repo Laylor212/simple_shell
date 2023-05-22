@@ -6,7 +6,7 @@
  * Auth: Anela Made & Mark Oladeinde
  **/
 
-#include<fcntl.h>
+#include <fcntl.h>
 #include <signal.h>
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -27,6 +27,17 @@ char *name;
 int hist;
 
 /**
+ * struct list_s - A new struct type defining a linked list
+ * @dir: A directory path
+ * @next: A pointer to another struct list_s
+ */
+typedef struct list_s
+{
+	char *dir;
+	struct list_s *next;
+} list_t;
+
+/**
  * struct builtin_s - A new struct type defining builtin commands.
  * @name: The name of the builtin command.
  * @f: A function pointer to a builtin command's function.
@@ -45,21 +56,21 @@ builtin_t;
  * @next: A pointer to another struct alias_s.
  **/
 typedef struct alias_s
-{ char *name;
+{
+	char *name;
 	char *value;
 	struct alias_s *next;
-}
-alias_t;
+} alias_t;
 
 /* Global aliases linked list */
 alias_t *aliases;
 
 /* Main Helpers */
-ssize_t_getline(char **lineptr, size_t *n, FILE *stream);
+ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 char **_strtok(char *line, char *delim);
 char *get_location(char *command);
-list_t *get_path_dir(chat *path);
+list_t *get_path_dir(char *path);
 int execute(char **args, char **front);
 void free_list(list_t *head);
 char *_itoa(int num);
@@ -82,7 +93,8 @@ char *_strncat(char *dest, const char *src, size_t n);
 char *_strcpy(char *dest, const char *src);
 char *_strchr(char *s, char c);
 int _strspn(char *s, char *accept);
-int _strcmp(const char *s1, const char *s2, size_t n);
+int _strcmp(char *s1, char *s2);
+int _strncmp(const char *s1, const char *s2, size_t n);
 
 /* Builtins */
 int (*get_builtin(char *command))(char **args, char **front);
@@ -100,7 +112,7 @@ void free_env(void);
 char **_getenv(const char *var);
 
 /* Error Handling */
-int vreate_error(char **args, int err);
+int create_error(char **args, int err);
 char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
@@ -125,4 +137,5 @@ void help_setenv(void);
 void help_unsetenv(void);
 void help_history(void);
 
-int proc_file_commands(char *file_path, int *xe_ret)
+int proc_file_commands(char *file_path, int *exe_ret);
+#endif /* MAIN_H */
