@@ -29,7 +29,7 @@ char *get_location(char *command)
 			return (NULL);
 
 		_strcpy(temp, dirs->dir);
-		_strcat(temp. "/");
+		_strcat(temp, "/");
 		_strcat(temp, command);
 
 		if (stat(temp, &st) == 0)
@@ -63,7 +63,7 @@ char *fill_path_dir(char *path)
 	{
 		if (path[i] == ':')
 		{
-			if (path[i + 1] == ':' || i = 0 || path[i + 1] == '\0')
+			if (path[i + 1] == ':' || i == 0 || path[i + 1] == '\0')
 				length += _strlen(pwd) + 1;
 			else
 				length++;
