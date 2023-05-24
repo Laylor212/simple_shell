@@ -74,7 +74,7 @@ int call_args(char **args, char **front, int *exe_ret)
 			}
 			else 
 			{
-				for (index++; args[index]; ndex++)
+				for (index++; args[index]; index++)
 					free(args[index]);
 				return (ret);
 			}
@@ -93,7 +93,7 @@ int call_args(char **args, char **front, int *exe_ret)
 			else 
 			{
 				for (index++; args[index]; index++)
-					free(args[index];
+					free(args[index]);
 				return (ret);
 			}
 		}
