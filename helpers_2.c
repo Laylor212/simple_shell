@@ -32,7 +32,7 @@ void handle_line(char **line, ssize_t read)
 		return;
 	j = 0;
 	old_line = *line;
-	for (i = 0, old_line[i]; i++)
+	for (i = 0; old_line[i]; i++)
 	{
 		current = old_line[i];
 		next = old_line[i + 1];
@@ -134,12 +134,12 @@ ssize_t get_new_len(char *line)
 			{
 				if (next == ';' && line[i - 1] != ' ' && line[i - 1] != ';')
 				{
-					new_line += 2;
+					new_len += 2;
 					continue;
 				}
 				else if (line[i - 1] == ';' && next != ' ')
 				{
-					new_line += 2;
+					new_len += 2;
 					continue;
 				}
 				if (line[i - 1] != ' ')
@@ -174,7 +174,7 @@ void logical_ops(char *line, ssize_t *new_len)
 	current = *line;
 	next = *(line + 1);
 
-	if (curent == '&')
+	if (current == '&')
 	{
 		if (next == '&' && previous != ' ')
 			(*new_len)++;
