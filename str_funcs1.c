@@ -22,7 +22,8 @@ int _strlen(const char *s)
 	if (!s)
 		return (length);
 	for (length = 0; s[length]; length++)
-		return(length);
+		;
+	return(length);
 }
 
 /**

@@ -46,8 +46,7 @@ typedef struct builtin_s
 {
 	char *name;
 	int (*f)(char **argv, char **front);
-}
-builtin_t;
+} builtin_t;
 
 /**
  * struct alias_a - A new struct defining aliases.
@@ -78,7 +77,7 @@ char *_itoa(int num);
 /* Input Helpers */
 void handle_line(char **line, ssize_t read);
 void variable_replacement(char **args, int *exe_ret);
-char * get_args(char *line, int *exe_ret);
+char *get_args(char *line, int *exe_ret);
 int call_args(char **args, char **front, int *exe_ret);
 int run_args(char **args, char **front, int *exe_ret);
 int handle_args(int *exe_ret);
@@ -100,11 +99,11 @@ int _strncmp(const char *s1, const char *s2, size_t n);
 int (*get_builtin(char *command))(char **args, char **front);
 int shellby_exit(char **args, char **front);
 int shellby_env(char**args, char __attribute__((__unused__)) **front);
-int shellby_setenv(char **args, char __attributes__((__unused__)) **front);
-int shelly_unsetenv(char **args, char __attributes__((unused__)) **front);
-int shellby_cd(char **args, char __attributes__((unused__)) **front);
-int shellby_alias(char **args, char __attributes__((unused__)) **front);
-int shellby_help(char **args, char __attributes__((unused__)) **front);
+int shellby_setenv(char **args, char __attribute__((__unused__)) **front);
+int shelly_unsetenv(char **args, char __attribute__((__unused__)) **front);
+int shellby_cd(char **args, char __attribute__((__unused__)) **front);
+int shellby_alias(char **args, char __attribute__((__unused__)) **front);
+int shellby_help(char **args, char __attribute__((__unused__)) **front);
 
 /* Builtin Helpers */
 char **_copyenv(void);
@@ -117,7 +116,7 @@ char *error_env(char **args);
 char *error_1(char **args);
 char *error_2_exit(char **args);
 char *error_2_cd(char **args);
-char *errors_2_syntax(char **args);
+char *error_2_syntax(char **args);
 char *error_126(char **args);
 char *error_127(char **args);
 
