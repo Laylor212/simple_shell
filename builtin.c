@@ -141,7 +141,7 @@ int shellby_cd(char **args, char __attribute__((__unused__)) **front)
 	dir_info[1] = pwd;
 	if (shellby_setenv(dir_info, dir_info) == -1)
 		return (-1);
-	if (args[0] && args[0][0] = '-' && args[0][1] != '-')
+	if (args[0] && args[0][0] == '-' && args[0][1] != '-')
 	{
 		write(STDOUT_FILENO, pwd, _strlen(pwd));
 		write(STDOUT_FILENO, new_line, 1);
