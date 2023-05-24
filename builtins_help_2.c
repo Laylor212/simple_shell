@@ -36,7 +36,11 @@ void help_setenv(void)
  */
 void help_unsetenv(void)
 {
+<<<<<<< HEAD
 	char *msg = "unsetenv: unsetenv [VARIABLE]\n\Removes an";
+=======
+	char *msg = "unsetenv: unsetenv [VARIABLE]\n\tRemoves an ";
+>>>>>>> 478151bbcb497c01fafcaee4fe57436b61cab337
 	
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "environmental variable.\n\n\tUpon failure, prints a ";
