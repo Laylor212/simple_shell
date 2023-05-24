@@ -10,7 +10,8 @@ void help_help(void);
  * help_all - Displays all possible builtin shellby commands.
  */
 void help_all(void)
-{ char *msg = "shellby\nThese shell commands are defined internally.\n";
+{ 
+	char *msg = "Shellby\nThese shell commands are defined internally.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "Type 'help' to see this list.\nType 'help name' to find";
@@ -31,7 +32,8 @@ void help_all(void)
  * help_alias - Displays information on the shellby builtin command 'alias'.
  */
 void help_alias(void)
-{ char *msg = "alias: alias [NAME[='VALUE'] ..]\n\tHandles aliases.\n";
+{ 
+	char *msg = "alias: alias [NAME[='VALUE'] ..]\n\tHandles aliases.\n";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "\n\talias: Print a list of all aliases, one per line, in ";
@@ -57,11 +59,11 @@ void help_cd(void)
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "process to DIRECTORY.\n\n\tIf no argument is given,the ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg = "command is interpreted as cd $HOME. If the argument '-' is ";
+	msg = "command is interpreted as cd $HOME. If the argument '-' is";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "given, the command is interupted as cd $OLDPWD.\n\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg = "\t The environment variables PWD and OLDPWD are updated ";
+	msg = "\tThe environment variables PWD and OLDPWD are updated ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "after a change of directory.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
@@ -74,7 +76,23 @@ void help_exit(void)
 	char *msg = "exit: exit[STATUS]\tExits the shell.\n\n\tThe ";
 
 	write(STDOUT_FILENO, msg, _strlen(msg));
-	msg =" \n help[BUILTIN NAME]\n\tSee specific information on each ";
+	msg = "STATUS argument is the integer used to exit the shell.";
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = " If no argument is given, the command is interpreted as";
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = " exit 0.\n";
+	write(STDOUT_FILENO, msg, _strlen(msg));
+}
+
+/**
+ * help_help - Displays information on the shell builtin commnd 'help'
+ */
+void help_help(void)
+{
+	char *msg = "help: help\n\tSee all posible Shellby builtin commands.\n";
+
+	write(STDOUT_FILENO, msg, _strlen(msg));
+	msg = "\n help[BUILTIN NAME]\n\tSee specific information on each ";
 	write(STDOUT_FILENO, msg, _strlen(msg));
 	msg = "builtin command.\n";
 	write(STDOUT_FILENO, msg, _strlen(msg));
